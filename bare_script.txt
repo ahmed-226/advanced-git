@@ -1,0 +1,108 @@
+## git log
+	1. git log --online 
+	2. graph
+		git log --graph  --> less complex
+		git log --graph --online 
+	3. git lg --> similar to graph 
+	4. git log --stat --> more general show hwo much add/deleted lines/files
+	5.  -p
+		git log -p --> show the actual changes ( lines of code ) at the file 
+		git log -p <commit id > 
+	6. -<number> | e.g.( git log -4 --online ) show lastest four commits 
+	7. git shortlog
+		git shortlog   --> show commit name grouped by users name
+		git shortlog -n   --> show commit name grouped by users name sorted by number of commits
+		git shortlog -n -s   --> list of users sorted by nubmer of commits
+		git shortlog -n -s -e  --> add emails
+		
+	8. --author="user name "
+		git log --author="user name " --> show commits only for this user 
+			|--> note : you can just right part of the name 
+			| 	note : you can add flags like -p --oneline
+			
+	9. formatting 
+		git log --pretty=format:"
+			%cn  		| cn: committer name
+			%H		| H : for full hash
+			%h  		| h : briefed hash
+			Data:%cd 	| cd: committer date
+		"          	
+	10. --merges
+		git log --merges --> show only merging commits
+		git log --no-merges --> show only merging commits that merge with other technique
+		
+		
+### Key Areas in Git:
+	1. Working Directory:
+		- The files you're actively editing in your project folder.
+		- Changes here are untracked or unstaged.
+	
+	2. Staging Area:
+		- Where changes are prepared for the next commit using git add.
+		- Acts as an intermediate zone between your working directory and your repository.
+	
+	3. Local Repository:
+		- After committing (git commit), the snapshot of the staging area is saved to the local repository.
+		- This is your Git database that contains all commits.
+	
+	4. Remote Repository (if applicable):
+		- After pushing (git push), commits are sent from your local repository to a remote server like GitHub.
+
+		
+## git reset
+	1. git reset <SHA hash >
+	
+	2. git reset --mixed <SHA hash >
+		- discard commit
+		- discard changes in staging area
+		- keep changes in working dirf
+	
+	3. git reset --soft  <SHA hash >
+		- discard commit 
+		- keep changes in staging area
+		- keep changes in working dir
+	
+	4. git reset --hard <SHA hash >
+		- discard commit 
+		- discard changes in staging area
+		- discard changes in working dir
+	5. get reset HEAD~<number>   --> reset the last number of commits
+	
+## git revert
+	1. git revert < SHA hash > --> reverse the changes of specific commit
+	|--> exampe if afrt435jkv commit add + hello, world line nad detelte - hello, revert it will delete hello world
+	|    and add hello again
+	|--> Note : 
+		- git revert for single commit 
+		- git revert more save than git reset becaues it does not modify the history but it make additional commit 	
+
+		
+## git commit 
+	1. git commit --amend --> open message window to update message of last commit 
+		|--> can use for add changes for last commit : git add <additional changes> | git commit --amend 
+	2. git commit --amend --author="new author"  --> change author name of last commit 
+		
+## git cherry-pick 
+	1. git cherry-pick <SHA hash> --> take changes at specific commit and apply it at the current branch
+		|--> this if very usefull for exampel if you have temp branch that is not  very updated and want to add 
+			changes to it and them add it to main on insead of merging the main with old branch and then make 
+			the changes then merge it again with main one just make chnages at old (temp) branch and take the 
+			last commit by cherry-pick and apply it to the main one 
+	2. git cherry-pick --no-commit <SHA hash> --> do the same without commit the changes 
+	
+## git reflog 
+	very important command show the local operation including (reset/revert) make it able to return changes 
+	discarded even by rest --hard 
+	
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
